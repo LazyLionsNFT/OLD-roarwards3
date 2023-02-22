@@ -21,7 +21,7 @@ const Token = () => {
         }
           })    
             .then(response => {
-                router.push('/')
+                console.log(response);
             });
     }, []);
  
