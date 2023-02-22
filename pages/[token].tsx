@@ -9,6 +9,7 @@ const Token = () => {
     const token = router.asPath;
     const address = {address: wallet?.accounts[0]?.address};
 
+    console.log('token');
     console.log(address);
     console.log(token.slice(1));
     

@@ -19,6 +19,7 @@ const TwitterButton = () => {
   const router = useRouter()
   
     const callAPI = () => {
+      console.log('callapi');
       router.push('http://3.144.152.191:3000/auth/twitter')
       // router.push('http://localhost:3000/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc3MDg1NjMzfQ.D9uZv5rawXerS5-XkGVlUm0nJ1TCJMQCnIf6wGJvvqU')
 	};

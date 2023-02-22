@@ -46,19 +46,19 @@ export default function Home() {
     // console.log(ethersProvider);
   }
 
-  const callAPI = async () => {
-		try {
-        const address = { walletAddress: wallet?.accounts[0]?.address };
-            const URL = await axios.post('http://3.144.152.191:3000/connect-wallet', address)
-            .then(response => {
-                console.log(response.data);
-              });
+  // const callAPI = async () => {
+	// 	try {
+  //       const address = { walletAddress: wallet?.accounts[0]?.address };
+  //           const URL = await axios.post('http://3.144.152.191:3000/connect-wallet', address)
+  //           .then(response => {
+  //               console.log(response.data);
+  //             });
                
-			// console.log(data);
-		} catch (err) {
-			console.log(err);
-		}
-	};
+	// 		// console.log(data);
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// };
 
   // useEffect(() => {
   //   callAPI();
