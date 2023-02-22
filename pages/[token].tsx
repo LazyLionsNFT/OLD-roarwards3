@@ -16,16 +16,18 @@ const Token = () => {
 
 
     useEffect(() => {
-        if(address && token != 'token' || token != '[token]'){
-        axios.post("http://3.144.152.191:3000/connect-wallet", {walletAddress: address},
-        {headers: {
-            'Authorization': token.slice(1),
-            'content-type': 'text/json'
-        }
-          })    
-            .then(response => {
-                console.log(response);
-            });
+        if(address){
+            if(token != 'token' && token != '[token]'){
+                axios.post("http://3.144.152.191:3000/connect-wallet", {walletAddress: address},
+                {headers: {
+                    'Authorization': token.slice(1),
+                    'content-type': 'text/json'
+                }
+                })    
+                    .then(response => {
+                        console.log(response);
+                    });
+                }
         }
     }, [address,token]);
  
