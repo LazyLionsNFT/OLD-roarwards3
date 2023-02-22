@@ -27,7 +27,7 @@ const Token = () => {
  
     return (
         <div>
-            <h3>token component</h3>
+            {/* <h3>token component</h3> */}
         </div>
     );
 };
