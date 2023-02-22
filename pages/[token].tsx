@@ -16,7 +16,7 @@ const Token = () => {
 
 
     useEffect(() => {
-        if(address){
+        if(address && token != 'token' || token != '[token]'){
         axios.post("http://3.144.152.191:3000/connect-wallet", {walletAddress: address},
         {headers: {
             'Authorization': token.slice(1),
@@ -27,7 +27,7 @@ const Token = () => {
                 console.log(response);
             });
         }
-    }, [address]);
+    }, [address,token]);
  
     return (
         <div>
