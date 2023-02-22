@@ -27,7 +27,7 @@ const Token = () => {
                 console.log(response);
             });
         }
-    }, [address,token]);
+    }, []);
  
     return (
         <div>
