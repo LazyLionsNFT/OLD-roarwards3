@@ -27,7 +27,7 @@ const Token = () => {
                 console.log(response);
             });
         }
-    }, [router]);
+    }, [address]);
  
     return (
         <div>
