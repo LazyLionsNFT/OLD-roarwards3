@@ -21,7 +21,9 @@ const Token = () => {
                 axios.post("http://3.144.152.191:3000/connect-wallet", {walletAddress: address},
                 {headers: {
                     'authorization': token.slice(1),
-                    'content-type': 'text/json'
+                    'content-type': 'text/json',
+                    'http-equiv':"Content-Security-Policy",
+                    'content':"upgrade-insecure-requests"
                 }
                 })    
                     .then(response => {
