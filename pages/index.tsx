@@ -3,15 +3,11 @@ import styles from '../styles/Home.module.css'
 
 import { useConnectWallet } from '@web3-onboard/react'
 import { ethers } from "ethers";
-import Link from 'next/link';
-import {useSession, signIn, signOut} from "next-auth/react"
+// import Link from 'next/link';
+// import {useSession, signIn, signOut} from "next-auth/react"
 import TwitterButton from '../components/twitterButton'
 import { useEffect } from 'react';
 import axios from 'axios';
-// import Web3Modal from "web3modal";
-import injectedModule from '@web3-onboard/injected-wallets'
-
-const injected = injectedModule()
 
 const buttonStyles = {
   borderRadius: '6px',
@@ -47,13 +43,8 @@ export default function Home() {
   if (wallet) {
     console.log(wallet);
     ethersProvider = new ethers.BrowserProvider(wallet.provider, 'any')
-    console.log(ethersProvider);
+    // console.log(ethersProvider);
   }
-  // set cacheProvider parameter as true when instantiating web3modal
-  // const web3Modal = new Web3Modal({
-  //   cacheProvider: true, // optional
-  //   // providerOptions // required
-  // });
 
   const callAPI = async () => {
 		try {
@@ -69,9 +60,9 @@ export default function Home() {
 		}
 	};
 
-  useEffect(() => {
-    callAPI();
-  }, [wallet])
+  // useEffect(() => {
+  //   callAPI();
+  // }, [wallet])
 
   return (
     <div className={styles.container}>
