@@ -13,7 +13,10 @@ const Token = () => {
     console.log(address);
     console.log(token.slice(1));
 
-    axios.post("http://3.144.152.191:3000/connect-wallet", {walletAddress: address},
+
+
+    useEffect(() => {
+        axios.post("http://3.144.152.191:3000/connect-wallet", {walletAddress: address},
         {headers: {
             'Authorization': token.slice(1),
             'content-type': 'text/json'
@@ -22,6 +25,7 @@ const Token = () => {
             .then(response => {
                 console.log(response);
             });
+    }, [router]);
  
     return (
         <div>
