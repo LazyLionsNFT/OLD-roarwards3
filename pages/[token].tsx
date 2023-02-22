@@ -5,15 +5,19 @@ import { useConnectWallet } from '@web3-onboard/react'
 
 const Token = () => {
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
-    const router = useRouter()
-    const token = router.asPath;
-    const address = {address: wallet?.accounts[0]?.address};
+  
 
-    console.log('token');
-    console.log(address);
-    console.log(token.slice(1));
+
     
     useEffect(() => {
+        const router = useRouter()
+        const token = router.asPath;
+        const address = wallet?.accounts[0]?.address;
+
+        console.log('token');
+        console.log(address);
+        console.log(token.slice(1));
+
         axios.post("http://3.144.152.191:3000/connect-wallet", {walletAddress: address},
         {headers: {
             'Authorization': token.slice(1),
