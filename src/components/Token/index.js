@@ -1,24 +1,28 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
+import { useLocation, useParams } from "react-router-dom";
 import axios from 'axios';
 import { useConnectWallet } from '@web3-onboard/react'
 
 const Token = () => {
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
-    const router = useRouter()
-    const token = router.asPath;
+    const params = useParams();
+
+    const token = params.token;
     const address = wallet?.accounts[0]?.address;
 
-    console.log('token');
+    console.log(token);
     console.log(address);
-    console.log(token.slice(1));
+    // console.log(address);
+    // console.log(token.slice(1));
 
 
 
     useEffect(() => {
+        console.log('hello');
         if(address){
             if(token != 'token' && token != '[token]'){
-                axios.post("http://3.144.152.191:3000/connect-wallet", {walletAddress: address},
+                axios.post("http://18.225.2.150:3000/connect-wallet", {walletAddress: address},
                 {headers: {
                     'authorization': token.slice(1),
                     'content-type': 'text/json',

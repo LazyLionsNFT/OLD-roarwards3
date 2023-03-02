@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/router'
+import { useNavigate } from "react-router-dom";
 
 const twitterButton = {
   borderRadius: '6px',
@@ -16,12 +15,12 @@ const twitterButton = {
 }
 
 const TwitterButton = () => {
-  const router = useRouter()
+let navigate = useNavigate();
   
     const callAPI = () => {
-      console.log('callapi');
-      router.push('http://3.144.152.191:3000/auth/twitter')
-      // router.push('http://localhost:3000/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc3MDg1NjMzfQ.D9uZv5rawXerS5-XkGVlUm0nJ1TCJMQCnIf6wGJvvqU')
+    //   navigate('http://18.225.2.150:3000/auth/twitter')
+      window.location.href = 'http://18.225.2.150:3000/auth/twitter';
+        // navigate('/auth/twitter/12312312dqwe1212dqw121.asd121')
 	};
 
   return (
