@@ -13,8 +13,6 @@ const Token = () => {
 
     console.log(token);
     console.log(address);
-    // console.log(address);
-    // console.log(token.slice(1));
 
 
 
