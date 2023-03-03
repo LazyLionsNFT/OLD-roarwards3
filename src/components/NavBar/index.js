@@ -15,7 +15,7 @@ const navbar = {
     listStyle: 'none',
     display: 'flex',
     marginTop: 'unset',
-    padding: '30px',
+    padding: '30px 0px',
     marginBottom: '0px'
   }
   
@@ -27,6 +27,11 @@ const navbar = {
     marginRight: '30px'
   }
 
+  const rightContent = {
+    width: '90%',
+    marginLeft: 'auto'
+}
+
 const NavBar = () => {
     return (
         <div className='flex-row justify-content-center' style={navbar}>
@@ -34,12 +39,14 @@ const NavBar = () => {
                 <img className='mt-3' src={logo}/>
             </div>
             <div className='w-50'>
-                <ul style={navbar_ul}>
-                    <li style={marginRight}>ROARwards</li>
-                    <li style={marginRight}>Members</li>
-                    <li style={marginRight}>More</li>
-                    <li style={marginRight}>Buy</li>
-                </ul>
+                <div style={rightContent}>
+                    <ul style={navbar_ul}>
+                        <li style={marginRight}>ROARwards</li>
+                        <li style={marginRight}>Members</li>
+                        <li style={marginRight}>More</li>
+                        <li style={marginRight}>Buy</li>
+                    </ul>
+                </div>
             </div>
         </div>
     );
