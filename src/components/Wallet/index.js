@@ -10,9 +10,9 @@ const rpcAPIKey = '<INFURA_KEY>' || '<ALCHEMY_KEY>'
 const rpcUrl = `https://eth-mainnet.g.alchemy.com/v2/${rpcAPIKey}` || `https://mainnet.infura.io/v3/${rpcAPIKey}`
 // initialize Onboard
 init({
-    connect: {
-        autoConnectLastWallet: true
-      },
+    // connect: {
+    //     autoConnectLastWallet: true
+    //   },
   wallets: [injected],
   chains: [
     {
