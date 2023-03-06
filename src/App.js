@@ -5,6 +5,7 @@ import RoutesTree from './components/RoutesTree';
 import TopSection from './components/TopSection';
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
+import MyCollection from './components/MyCollection';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           {/* <NavBar/> */}
           <TopSection/>
           <Gallery/>
+          <MyCollection/>
         <RoutesTree/>
         <Footer/>
       </header>

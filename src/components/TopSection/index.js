@@ -51,7 +51,7 @@ const TopSection = () => {
                             <div  className='d-flex flex-row justify-content-between mt-3'>
                                 <span style={{fontSize: '14px'}} className='font-weight-light'>
                                 <img style={{marginRight: '6px'}} src={wallet}/>
-                                    Adress 0x646434..5a6
+                                    Adress 0x0000...000
                                 </span>
                                 <span style={{fontSize: '14px'}} className='font-weight-light'>
                                 <img style={{marginRight: '6px'}} src={twitter}/>

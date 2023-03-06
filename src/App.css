@@ -15,7 +15,18 @@
 .App-link {
   color: #61dafb;
 }
-
+.nav-tabs {
+  --bs-nav-tabs-border-width: none !important;
+  --bs-nav-tabs-link-active-color: white !important;
+  --bs-nav-tabs-link-active-bg: none !important;
+  font-size: 14px;
+}
+.nav-link.active {
+  border-bottom: 2px solid !important;
+}
+.nav-link {
+  color: white !important;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
