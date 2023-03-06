@@ -30,7 +30,7 @@ const Footer = () => {
                     {/* <ul className='mb-0' style={footer_ul}> */}
                         <span style={marginRight}>Privacy</span>
                         <span>Terms</span>
-                        <span style={{float: 'right'}}>2023 Blockchain Media PTY LTD</span>
+                        <span style={{float: 'right', marginRight: '38px'}}>2023 Blockchain Media PTY LTD</span>
                     {/* </ul> */}
                 {/* <div>
                     <p className='mb-0'>2023 Blockchain Media PTY LTD</p>

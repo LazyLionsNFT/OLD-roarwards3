@@ -4,6 +4,8 @@ import NavBar from '../NavBar';
 import twitter from '../../assets/images/icons/twiiter.png';
 import discord from '../../assets/images/icons/discord.png';
 import wallet from '../../assets/images/icons/ic_eth.png';
+import underline from '../../assets/images/underline.png';
+import email from '../../assets/images/icons/email.png';
 
 const flex = {
    display: 'flex'
@@ -26,13 +28,39 @@ const rightContent = {
 }
 
 const roarpoints = {
-    fontSize: '181px',
+    fontFamily: 'Barlow Condensed',
+    fontSize: '230px',
     color: '#CFA817',
     fontWeight: '900',
-    letterSpacing: '-8px',
-    textDecoration: 'underline',
-    textDecorationThickness: '16px',
-    textUnderlinePosition: 'under'
+    textShadow: '4px 0 rgb(207 168 23)'
+    // letterSpacing: '-8px',
+    // textDecoration: 'underline',
+    // textDecorationThickness: '16px',
+    // textUnderlinePosition: 'under'
+}
+const barlow = {
+    fontFamily: 'Barlow',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    fontSize: '44px'
+}
+const addresses = {
+    background: 'rgba(250, 250, 250, 0.14)',
+    borderRadius: '5px',
+    fontSize: '14px',
+    padding: '8px 10px',
+
+}
+const grid = {
+    fontFamily: 'Barlow',
+    fontStyle: 'normal',
+    display: 'grid',
+    gridGap: '14px',
+    gridTemplateAreas:
+       ` "box1 box2"
+        "box3 box4"`,
+    gridTemplateRows: '1fr 1fr',
+    width: '80%'
 }
 
 
@@ -43,26 +71,32 @@ const TopSection = () => {
             <   NavBar/>
                 <div  className='d-flex flex-row justify-content-center'>
                     <div className='w-50 text-center'>
-                        <img style={{width: "80%"}} src={lion1}/>
+                        <img style={{width: "90%"}} src={lion1}/>
                     </div>
-                    <div className='w-50 text-start mt-5 pl-4'>
+                    <div className='w-50 text-start mt-2 pl-4'>
                         <div style={rightContent}>
-                            <h1 style={{fontWeight: '700'}}>David Gilmour</h1>
-                            <div  className='d-flex flex-row justify-content-between mt-3'>
-                                <span style={{fontSize: '14px'}} className='font-weight-light'>
-                                <img style={{marginRight: '6px'}} src={wallet}/>
+                            <h1 style={barlow}>David Gilmour</h1>
+                            <div style={grid} className=' mt-3'>
+                                <span style={addresses} className='font-weight-light'>
+                                <img style={{marginRight: '8px'}} src={wallet}/>
                                     Adress 0x0000...000
                                 </span>
-                                <span style={{fontSize: '14px'}} className='font-weight-light'>
-                                <img style={{marginRight: '6px'}} src={twitter}/>
+                                <span style={addresses} className='font-weight-light'>
+                                <img style={{marginRight: '8px'}} src={twitter}/>
                                     Discord Not Connected
                                 </span>
-                                <span style={{fontSize: '14px'}} className='font-weight-light'>
-                                <img style={{marginRight: '6px'}} src={discord}/>
+                                <span style={addresses} className='font-weight-light'>
+                                <img style={{marginRight: '8px'}} src={email}/>
+                                    test.example@gmail.com
+                                </span>
+                                <span style={addresses} className='font-weight-light'>
+                                <img style={{marginRight: '8px'}} src={discord}/>
                                     Twitter Not Connected
                                 </span>
                             </div>
+                            {/* <p style={{fontFamily: 'Barlow'}}>ROARpoints</p> */}
                             <h1 style={roarpoints}>12,000</h1>
+                            <img style={{width: '86%', marginTop: '-55px'}} src={underline} alt="underline"/>
                         </div>
                     </div>
                 </div>

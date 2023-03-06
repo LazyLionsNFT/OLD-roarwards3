@@ -43,7 +43,7 @@ const MyCollection = () => {
             <div style={container}>
                 <div  className=''>
                     <div className='w-100 text-start'>
-                        <h4 className='mb-4'>My Collection</h4>
+                        <h4 style={{fontWeight: '700', fontSize: '24px'}} className='mb-4'>MY COLLECTION</h4>
                         <Tabs
                             id="controlled-tab-example"
                             activeKey={key}
@@ -54,63 +54,63 @@ const MyCollection = () => {
                                 <div className='d-flex flex-wrap mt-5'>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion2}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion3}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion4}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion5}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion4}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion5}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion5}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion3}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion2}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion5}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion4}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion2}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                 </div>
                             </Tab>
@@ -118,26 +118,26 @@ const MyCollection = () => {
                                 <div className='d-flex flex-wrap mt-5'>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion5}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion4}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion2}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                 </div>    
                             </Tab>
                             <Tab eventKey="Clubs" title="Lazy Clubs 1"> 
                                 <div style={imgdiv} >
                                         <img style={lionimg} src={lion2}/>
-                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
-                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                 </div>
                             </Tab>
                             <Tab eventKey="Drinks" title="Lazy Drinks 0">
