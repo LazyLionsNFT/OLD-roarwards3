@@ -24,7 +24,8 @@ let navigate = useNavigate();
 	};
 
   return (
-    <button style={twitterButton} onClick={callAPI}>Login with Twitter</button>
+    <></>
+    // <button style={twitterButton} onClick={callAPI}>Login with Twitter</button>
   );
 };
 

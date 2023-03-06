@@ -40,3 +40,9 @@
   background: transparent !important;
   border: none !important;
 }
+.connect-wallet:hover{
+  cursor: pointer;
+}
+#account-center-with-notify{
+  display: none !important;
+}
