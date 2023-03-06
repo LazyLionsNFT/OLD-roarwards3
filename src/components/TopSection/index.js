@@ -42,7 +42,8 @@ const barlow = {
     fontFamily: 'Barlow',
     fontStyle: 'normal',
     fontWeight: '700',
-    fontSize: '44px'
+    fontSize: '44px',
+    marginBottom: '35px'
 }
 const addresses = {
     background: 'rgba(250, 250, 250, 0.14)',
