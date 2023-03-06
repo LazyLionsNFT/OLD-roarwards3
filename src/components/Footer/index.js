@@ -19,19 +19,19 @@ const footer_ul = {
   }
 
   const container = {
-    width: '86%',
+    width: '84%',
     margin: 'auto'
 }
 
 const Footer = () => {
     return (
         <div style={footer}>
-            <div className='container'>
-                    <ul className='mb-0' style={footer_ul}>
-                        <li style={marginRight}>Privacy</li>
-                        <li>Terms</li>
-                        {/* <p>2023 Blockchain Media PTY LTD</p> */}
-                    </ul>
+            <div style={container}>
+                    {/* <ul className='mb-0' style={footer_ul}> */}
+                        <span style={marginRight}>Privacy</span>
+                        <span>Terms</span>
+                        <span style={{float: 'right'}}>2023 Blockchain Media PTY LTD</span>
+                    {/* </ul> */}
                 {/* <div>
                     <p className='mb-0'>2023 Blockchain Media PTY LTD</p>
                 </div> */}

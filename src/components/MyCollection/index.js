@@ -41,7 +41,7 @@ const MyCollection = () => {
 
     return (
             <div style={container}>
-                <div  className='d-flex flex-row justify-content-between'>
+                <div  className=''>
                     <div className='w-100 text-start'>
                         <h4 className='mb-4'>My Collection</h4>
                         <Tabs
@@ -50,7 +50,7 @@ const MyCollection = () => {
                             onSelect={(k) => setKey(k)}
                             className="mb-3"
                             >
-                            <Tab eventKey="home" title="All">
+                            <Tab eventKey="home" title="All 12">
                                 <div className='d-flex flex-wrap mt-5'>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion2}/>
@@ -114,7 +114,7 @@ const MyCollection = () => {
                                     </div>
                                 </div>
                             </Tab>
-                            <Tab eventKey="profile" title="Lazy Lions">
+                            <Tab eventKey="profile" title="Lazy Lions 3">
                                 <div className='d-flex flex-wrap mt-5'>
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion5}/>
@@ -133,14 +133,18 @@ const MyCollection = () => {
                                     </div>
                                 </div>    
                             </Tab>
-                            <Tab eventKey="Clubs" title="Lazy Clubs"> 
-                                {/* <Sonnet /> */}
+                            <Tab eventKey="Clubs" title="Lazy Clubs 1"> 
+                                <div style={imgdiv} >
+                                        <img style={lionimg} src={lion2}/>
+                                        <span style={{fontSize: '13px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '18px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                </div>
                             </Tab>
-                            <Tab eventKey="Drinks" title="Lazy Drinks">
-                                {/* <Sonnet /> */}
+                            <Tab eventKey="Drinks" title="Lazy Drinks 0">
+                                
                             </Tab>
-                            <Tab eventKey="Bungalows" title="Lazy Lions Bungalows">
-                                {/* <Sonnet /> */}
+                            <Tab eventKey="Bungalows" title="Lazy Lions Bungalows 0">
+                                
                             </Tab>
                         </Tabs>
                   
