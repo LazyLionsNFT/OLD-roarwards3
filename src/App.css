@@ -46,3 +46,6 @@
 #account-center-with-notify{
   display: none !important;
 }
+.galleryImg{
+  cursor: pointer;
+}

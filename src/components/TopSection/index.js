@@ -33,12 +33,7 @@ init({
 const flex = {
    display: 'flex'
   }
-const main = {
-    background: '#1F1F1F',
-    margin: '26px',
-    borderRadius: '30px',
-    color: 'white'
-}  
+
 
 const container = {
     width: '86%',
@@ -92,12 +87,22 @@ const grid = {
 }
 
 
-const TopSection = () => {
+const TopSection = ({query}) => {
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
     const updateAccountCenter = useAccountCenter()
 
+    console.log("topsection");
+    console.log(query == null);
+
+    const main = {
+        background: Object.keys(query).length == 0 ? '#1F1F1F' : query.background,
+        margin: '26px',
+        borderRadius: '30px',
+        color: 'white'
+    }  
+
     if (wallet) {
-          console.log("updateAccountCenter :"+updateAccountCenter);
+        //   console.log("updateAccountCenter :"+updateAccountCenter);
           updateAccountCenter({ minimal: true, enabled: false })
             // ethersProvider = new ethers.providers.Web3Provider(wallet.provider, 'any')
           // console.log(ethersProvider);
@@ -109,7 +114,7 @@ const TopSection = () => {
             <   NavBar/>
                 <div  className='d-flex flex-row justify-content-center'>
                     <div className='w-50 text-center'>
-                        <img style={{width: "90%"}} src={lion1}/>
+                        <img style={Object.keys(query).length == 0  ? {width: "90%"} : {width: "66%"}} src={ Object.keys(query).length == 0 ? lion1 : query.imagename }/>
                     </div>
                     <div className='w-50 text-start mt-2 pl-4'>
                         <div style={rightContent}>

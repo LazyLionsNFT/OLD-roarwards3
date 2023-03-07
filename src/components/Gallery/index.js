@@ -1,5 +1,4 @@
-import React from 'react';
-import lion1 from '../../assets/images/lion1.png';
+import React, {createContext, useState} from 'react';
 import NavBar from '../NavBar';
 import lion2 from '../../assets/images/lion2.png';
 import lion3 from '../../assets/images/lion3.png';
@@ -33,17 +32,24 @@ const profileacvh = {
     marginLeft: 'auto'
 }
 
-const Gallery = () => {
+const Gallery = ({ onQuery }) => {
+    const [items, setItems] = useState('');
+
+    const imageChange = (imagename, background) => {
+        // console.log(imagename,background);
+        onQuery({imagename, background});
+    }
+
     return (
             <div style={container}>
                 <div  className='d-flex flex-row justify-content-center'>
                     <div className='w-50 text-start'>
                         <h4 style={{fontWeight: '700', fontSize: '24px'}}>MY GALLERY</h4>
                         <div className='d-flex mt-4'>
-                            <img style={imgbox} src={lion2}/>
-                            <img style={imgbox} src={lion3}/>
-                            <img style={imgbox} src={lion4}/>
-                            <img style={imgbox} src={lion5}/>
+                            <img onClick={() => imageChange(lion2,'#6B6B43')} style={imgbox} className='galleryImg' src={lion2}/>
+                            <img onClick={() => imageChange(lion3,'#938787')}  style={imgbox} className='galleryImg' src={lion3}/>
+                            <img onClick={() => imageChange(lion4,'#544E4E')}  style={imgbox} className='galleryImg' src={lion4}/>
+                            <img onClick={() => imageChange(lion5,'#B97E9E')}  style={imgbox} className='galleryImg' src={lion5}/>
                         </div>
                     </div>
                     <div className='w-50 text-start'>
