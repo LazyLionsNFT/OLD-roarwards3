@@ -98,6 +98,12 @@ const TopSection = ({query}) => {
         color: 'white'
     }  
 
+    const callAPI = () => {
+        //   navigate('http://18.225.2.150:3000/auth/twitter')
+          window.location.href = 'http://18.225.2.150:3000/auth/twitter';
+            // navigate('/auth/twitter/12312312dqwe1212dqw121.asd121')
+        };
+
     if (wallet) {
         //   console.log("updateAccountCenter :"+updateAccountCenter);
           updateAccountCenter({ minimal: true, enabled: false })
@@ -129,7 +135,7 @@ const TopSection = ({query}) => {
                                 <img style={{marginRight: '8px'}} src={email}/>
                                     test.example@gmail.com
                                 </span>
-                                <span style={addresses} className='font-weight-light'>
+                                <span onClick={callAPI}  style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={discord}/>
                                     Twitter Not Connected
                                 </span>
