@@ -47,10 +47,10 @@ const rightContent = {
 
 const roarpoints = {
     fontFamily: 'Barlow Condensed',
-    fontSize: '230px',
+    fontSize: '224px',
     color: '#CFA817',
     fontWeight: '900',
-    textShadow: '4px 0 rgb(207 168 23)'
+    // textShadow: '4px 0 rgb(207 168 23)'
     // letterSpacing: '-8px',
     // textDecoration: 'underline',
     // textDecorationThickness: '16px',
@@ -90,9 +90,6 @@ const grid = {
 const TopSection = ({query}) => {
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
     const updateAccountCenter = useAccountCenter()
-
-    console.log("topsection");
-    console.log(query == null);
 
     const main = {
         background: Object.keys(query).length == 0 ? '#1F1F1F' : query.background,
@@ -139,7 +136,7 @@ const TopSection = ({query}) => {
                             </div>
                             {/* <p style={{fontFamily: 'Barlow'}}>ROARpoints</p> */}
                             <h1 style={roarpoints}>12,000</h1>
-                            <img style={{width: '86%', marginTop: '-55px'}} src={underline} alt="underline"/>
+                            <img style={{width: '92%', marginTop: '-48px'}} src={underline} alt="underline"/>
                         </div>
                     </div>
                 </div>

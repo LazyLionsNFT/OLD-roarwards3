@@ -6,7 +6,7 @@ import share from '../../assets/images/icons/share.png'
 import { NavLink } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-bootstrap/Dropdown';
-import dropdownicon from '../../assets/images/icons/dropdown.png'
+import ConnectionModal from '../ConnectionModal/index'
 
 const navbar = {
     backgroundColor: 'transparent',
@@ -118,24 +118,7 @@ const NavBar = () => {
                 </div>
             </div>
 
-            <Modal
-                show={show}
-                onHide={() => setShow(false)}
-                dialogClassName="modal-90w"
-                aria-labelledby="example-custom-modal-styling-title"
-                centered
-            >
-                <Modal.Header closeButton>
-                <Modal.Title id="example-custom-modal-styling-title">
-                    Custom Modal Styling
-                </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <p>
-                    Ipsum molestiae natus adipisci modi
-                </p>
-                </Modal.Body>
-            </Modal>
+            <ConnectionModal open={show} close={() => setShow(false)}/>
         </div>
     );
 };

@@ -33,7 +33,8 @@ const imgcircle = {
 }
 
 const lionimg = {
-    width: '180px'
+    width: '180px',
+    marginBottom: '10px'
 }
 
 const MyCollection = () => {

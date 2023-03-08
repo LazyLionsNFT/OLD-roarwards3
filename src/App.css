@@ -49,3 +49,40 @@
 .galleryImg{
   cursor: pointer;
 }
+.modal-content{
+  background-color: #1f1f1f !important;
+  color: #f1f1f1 !important;
+}
+.modal-title{
+  font-family: 'Barlow Condensed';
+  font-weight: 700 !important;
+  color: #CFA817;
+  font-size: 32px !important;
+}
+.modal-header{
+  border-bottom: none !important;
+  margin: auto;
+  margin-top: 45px;
+}
+.modal-header .btn-close{
+  position: absolute;
+  right: 35px;
+  top: 40px;
+}
+.modal-body{
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  font-family: 'Barlow';
+}
+.form-check-input:checked{
+  background-color: transparent !important;
+  border: 2px solid #f1f1f1 !important;
+}
+.form-check-input{
+  background-color: transparent !important;
+  border: 2px solid #f1f1f1 !important;
+}
+.add-new-wallet:hover{
+  cursor: pointer;
+}
