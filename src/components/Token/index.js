@@ -29,6 +29,7 @@ const Token = () => {
                 }
                 })    
                     .then(response => {
+                        console.log('twiiter response');
                         console.log(response);
                     });
                 }

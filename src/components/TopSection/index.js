@@ -82,6 +82,12 @@ const grid = {
     gridTemplateRows: '1fr 1fr',
     width: '80%'
 }
+const roarPoints = {
+    marginBottom: '-58px',
+    marginTop: '46px',
+    fontFamily: 'Barlow',
+    fontWeight: '300'
+}
 
 
 const TopSection = ({query}) => {
@@ -118,7 +124,7 @@ const TopSection = ({query}) => {
             <   NavBar/>
                 <div  className='d-flex flex-row justify-content-center'>
                     <div className='w-50 text-center'>
-                        <img style={Object.keys(query).length == 0  ? {width: "90%"} : {width: "80%"}} src={ Object.keys(query).length == 0 ? lion1 : query.imagename }/>
+                        <img style={Object.keys(query).length == 0  ? {width: "94%"} : {width: "84%"}} src={ Object.keys(query).length == 0 ? lion1 : query.imagename }/>
                     </div>
                     <div className='w-50 text-start mt-2 pl-4'>
                         <div style={rightContent}>
@@ -141,7 +147,7 @@ const TopSection = ({query}) => {
                                     Twitter Not Connected
                                 </span>
                             </div>
-                            {/* <p style={{fontFamily: 'Barlow'}}>ROARpoints</p> */}
+                            <p style={roarPoints}>ROARpoints</p>
                             <h1 style={roarpoints}>12,000</h1>
                             <img style={{width: '92%', marginTop: '-48px'}} src={underline} alt="underline"/>
                         </div>
