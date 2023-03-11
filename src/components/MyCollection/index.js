@@ -106,11 +106,15 @@ const MyCollection = () => {
                             >
                             <Tab eventKey="home" title="All 12">
                                 <div className='d-flex flex-wrap mt-5'>
+                                {data && data.map((lion)=>
                                     <div style={imgdiv} >
-                                        <img style={lionimg} src={lion2}/>
+                                        <img style={lionimg} src={lion.imageURL}/>
                                         <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
                                         <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
+                                )
+                                }
+                                
                                     <div style={imgdiv} >
                                         <img style={lionimg} src={lion3}/>
                                         <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
