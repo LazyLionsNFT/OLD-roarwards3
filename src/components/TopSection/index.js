@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState ,useEffect} from 'react';
 import lion1 from '../../assets/images/lion1.png';
 import NavBar from '../NavBar';
 import twitter from '../../assets/images/icons/twiiter.png';
@@ -8,7 +8,9 @@ import underline from '../../assets/images/underline.png';
 import email from '../../assets/images/icons/email.png';
 import { init, useConnectWallet, useAccountCenter } from '@web3-onboard/react'
 import injectedModule from '@web3-onboard/injected-wallets'
+import Web3 from 'web3';
 
+const web3 = new Web3(window.ethereum);
 
 const injected = injectedModule()
 // Only one RPC endpoint required per chain
@@ -50,11 +52,6 @@ const roarpoints = {
     fontSize: '224px',
     color: '#CFA817',
     fontWeight: '900',
-    // textShadow: '4px 0 rgb(207 168 23)'
-    // letterSpacing: '-8px',
-    // textDecoration: 'underline',
-    // textDecorationThickness: '16px',
-    // textUnderlinePosition: 'under'
 }
 const barlow = {
     fontFamily: 'Barlow',
@@ -88,15 +85,19 @@ const grid = {
 
 
 const TopSection = ({query}) => {
+
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
     const updateAccountCenter = useAccountCenter()
 
     const main = {
-        background: Object.keys(query).length == 0 ? '#1F1F1F' : query.background,
+        background: Object.keys(query).length == 0 ? '#1F1F1F' : '#'+query.background,
         margin: '26px',
         borderRadius: '30px',
         color: 'white'
     }  
+
+    // console.log('REACT_APP_ADDRESS');
+    // console.log(process.env.REACT_APP_LAZY_LIONS);
 
     const callAPI = () => {
         //   navigate('http://18.225.2.150:3000/auth/twitter')
@@ -117,7 +118,7 @@ const TopSection = ({query}) => {
             <   NavBar/>
                 <div  className='d-flex flex-row justify-content-center'>
                     <div className='w-50 text-center'>
-                        <img style={Object.keys(query).length == 0  ? {width: "90%"} : {width: "66%"}} src={ Object.keys(query).length == 0 ? lion1 : query.imagename }/>
+                        <img style={Object.keys(query).length == 0  ? {width: "90%"} : {width: "80%"}} src={ Object.keys(query).length == 0 ? lion1 : query.imagename }/>
                     </div>
                     <div className='w-50 text-start mt-2 pl-4'>
                         <div style={rightContent}>
@@ -135,7 +136,7 @@ const TopSection = ({query}) => {
                                 <img style={{marginRight: '8px'}} src={email}/>
                                     test.example@gmail.com
                                 </span>
-                                <span onClick={callAPI}  style={addresses} className='font-weight-light connect-wallet'>
+                                <span onClick={callAPI}  style={addresses} className='font-weight-light connect-wallet.env'>
                                 <img style={{marginRight: '8px'}} src={discord}/>
                                     Twitter Not Connected
                                 </span>
