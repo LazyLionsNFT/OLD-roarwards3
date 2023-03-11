@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import lion1 from '../../assets/images/lion1.png';
 import NavBar from '../NavBar';
 import Tab from 'react-bootstrap/Tab';
@@ -7,6 +7,13 @@ import lion2 from '../../assets/images/lion2.png';
 import lion3 from '../../assets/images/lion3.png';
 import lion4 from '../../assets/images/lion4.png';
 import lion5 from '../../assets/images/lion5.png';
+import { useConnectWallet } from '@web3-onboard/react'
+import lazyLionABI from '../../LazyLionAbi.json';
+import lionsBackgroundColors from '../../constants/lionsBackgroundColors.json';
+import axios from 'axios';
+import Web3 from 'web3';
+
+const web3 = new Web3(window.ethereum);
 
 const flex = {
    display: 'flex'
@@ -39,6 +46,52 @@ const lionimg = {
 
 const MyCollection = () => {
     const [key, setKey] = useState('home');
+    const [tokens, setTokens] = useState([]);
+    const [data, setData] = useState([]);
+
+    const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
+
+    useEffect(() => {
+        if(wallet){
+            const address = wallet?.accounts[0]?.address;
+        
+            // Load the Lion contract instance
+            const lionContract = new web3.eth.Contract(lazyLionABI, process.env.REACT_APP_LAZY_LIONS);
+        
+            // Get the tokens owned by the user
+            lionContract.methods.tokensOfOwner(address).call().then(tokens => {
+            
+              setTokens(tokens);
+            });
+        }
+    }, [wallet]);
+
+    useEffect(() => {
+        if(tokens.length > 0){
+
+            tokens.map((token) =>{
+                    // console.log('map'+token);
+                    axios.get(`https://ipfs.io/ipfs/QmNpHFmk4GbJxDon2r2soYpwmrKaz1s6QfGMnBJtjA2ESd/${token}`)    
+                        .then(response => {
+
+                            const imageURL = response.data.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+                            let newObj;
+                            lionsBackgroundColors.map((backgroundColor)=>{
+                                if(backgroundColor.Background === response.data?.attributes[0].value){
+                                    newObj = {
+                                        "backgrounColor": backgroundColor['Lazy Lions'],
+                                        "imageURL": imageURL, ...response.data,
+                                         ...response.data
+                                        }
+                                }
+                            })
+
+                            setData(data => [...data, newObj] );
+                        });
+            });
+
+        }
+    }, [tokens,wallet]);
 
     return (
             <div style={container}>

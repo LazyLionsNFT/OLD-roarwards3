@@ -46,7 +46,6 @@ const Gallery = ({ onQuery }) => {
     const [data, setData] = useState([]);
 
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
-    const updateAccountCenter = useAccountCenter()
 
 
     const imageChange = (imagename, background) => {

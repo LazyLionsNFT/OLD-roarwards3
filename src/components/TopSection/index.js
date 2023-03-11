@@ -148,7 +148,7 @@ const TopSection = ({query}) => {
                                 </span>
                             </div>
                             <p style={roarPoints}>ROARpoints</p>
-                            <h1 style={roarpoints}>12,000</h1>
+                            <h1 style={roarpoints}>0</h1>
                             <img style={{width: '92%', marginTop: '-48px'}} src={underline} alt="underline"/>
                         </div>
                     </div>
