@@ -22,7 +22,7 @@ const Token = () => {
             if(token != 'token' && token != '[token]'){
                 axios.post("http://18.225.2.150:3000/connect-wallet", {walletAddress: address},
                 {headers: {
-                    'authorization': "Bearer "+token.slice(1),
+                    'authorization': "Bearer "+token,
                     'content-type': 'text/json',
                     'http-equiv':"Content-Security-Policy",
                     'content':"upgrade-insecure-requests"
