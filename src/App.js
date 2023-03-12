@@ -14,14 +14,15 @@ import MyCollection from './components/MyCollection';
 function App() {
 
   const [query, setQuery] = useState({});
+  const [roarPoints, setRoarPoints] = useState();
 
   return (
     <div className="App">
       <header className="App-header">
           {/* <NavBar/> */}
-          <TopSection query={query}/>
+          <TopSection query={query} roarPoints={roarPoints}/>
           <Gallery onQuery={setQuery}/>
-          <MyCollection/>
+          <MyCollection onQuery={setQuery} onQueryPoints={setRoarPoints}/>
         <RoutesTree/>
         <Footer/>
       </header>

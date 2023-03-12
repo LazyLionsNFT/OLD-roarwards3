@@ -43,6 +43,8 @@ const ConnectionModal = (props) => {
 
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
 
+    const storedValue = localStorage.getItem('token');
+
     return (
             <Modal
                 show={props.open}
@@ -72,11 +74,11 @@ const ConnectionModal = (props) => {
                             <button style={connectionButton}>Connected</button>
                         </div> */}
                         <div style={connectionbox}>
-                            <span style={{marginRight: '43px'}}  className='font-weight-light mr-4'>
+                            <span style={{marginRight: storedValue ? '73px' : '43px'}}  className='font-weight-light mr-4'>
                                 <img style={{marginRight: '8px',width: '6%'}} src={twitter}/>
                                 Twitter.com
                             </span>
-                            <button style={connectionButton}>Not Connected</button>
+                            <button style={connectionButton}>{storedValue ? 'Connected' : 'Not Connected'}</button>
                         </div>
                         <div style={{margin: '18px 22px'}}  class="form-check">
                             <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something"/>

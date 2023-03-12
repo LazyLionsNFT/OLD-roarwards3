@@ -12,6 +12,8 @@ import Web3 from 'web3';
 
 const web3 = new Web3(window.ethereum);
 
+const storedValue = localStorage.getItem('token');
+
 const injected = injectedModule()
 // Only one RPC endpoint required per chain
 const rpcAPIKey = '<INFURA_KEY>' || '<ALCHEMY_KEY>'
@@ -19,7 +21,7 @@ const rpcUrl = `https://eth-mainnet.g.alchemy.com/v2/${rpcAPIKey}` || `https://m
 // initialize Onboard
 init({
     connect: {
-        autoConnectLastWallet: true
+        autoConnectLastWallet: storedValue ? true : false
       },
   wallets: [injected],
   chains: [
@@ -83,20 +85,20 @@ const grid = {
     width: '80%'
 }
 const roarPoints = {
-    marginBottom: '-58px',
-    marginTop: '46px',
+    marginBottom: '-46px',
+    marginTop: '48px',
     fontFamily: 'Barlow',
     fontWeight: '300'
 }
 
 
-const TopSection = ({query}) => {
+const TopSection = (props) => {
 
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
     const updateAccountCenter = useAccountCenter()
 
     const main = {
-        background: Object.keys(query).length == 0 ? '#1F1F1F' : '#'+query.background,
+        background: Object.keys(props.query).length == 0 ? '#1F1F1F' : props.query.background,
         margin: '26px',
         borderRadius: '30px',
         color: 'white'
@@ -124,7 +126,7 @@ const TopSection = ({query}) => {
             <   NavBar/>
                 <div  className='d-flex flex-row justify-content-center'>
                     <div className='w-50 text-center'>
-                        <img style={Object.keys(query).length == 0  ? {width: "94%"} : {width: "84%"}} src={ Object.keys(query).length == 0 ? lion1 : query.imagename }/>
+                        <img style={Object.keys(props.query).length == 0  ? {width: "96%"} : {width: "86%"}} src={ Object.keys(props.query).length == 0 ? lion1 : props.query.imagename }/>
                     </div>
                     <div className='w-50 text-start mt-2 pl-4'>
                         <div style={rightContent}>
@@ -142,14 +144,14 @@ const TopSection = ({query}) => {
                                 <img style={{marginRight: '8px'}} src={email}/>
                                     test.example@gmail.com
                                 </span>
-                                <span onClick={callAPI}  style={addresses} className='font-weight-light connect-wallet.env'>
+                                <span onClick={callAPI}  style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={discord}/>
-                                    Twitter Not Connected
+                                   {storedValue ? 'Twitter Connected' : 'Twitter Not Connected' }
                                 </span>
                             </div>
                             <p style={roarPoints}>ROARpoints</p>
-                            <h1 style={roarpoints}>0</h1>
-                            <img style={{width: '92%', marginTop: '-48px'}} src={underline} alt="underline"/>
+                            <h1 style={roarpoints}>{storedValue ? props.roarPoints: '0'}</h1>
+                            <img style={{width: '70%', marginTop: '-78px'}} src={underline} alt="underline"/>
                         </div>
                     </div>
                 </div>

@@ -11,9 +11,10 @@ const Token = () => {
     const token = params.token;
     const address = wallet?.accounts[0]?.address;
 
-    console.log(token);
-    console.log(address);
+    // console.log(token);
+    // console.log(address);
 
+    localStorage.setItem('token', token);
 
 
     useEffect(() => {
@@ -29,8 +30,7 @@ const Token = () => {
                 }
                 })    
                     .then(response => {
-                        console.log('twiiter response');
-                        console.log(response);
+                        window.location.href = '/'
                     });
 
 
