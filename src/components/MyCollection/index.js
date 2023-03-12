@@ -9,6 +9,7 @@ import lion4 from '../../assets/images/lion4.png';
 import lion5 from '../../assets/images/lion5.png';
 import { useConnectWallet } from '@web3-onboard/react'
 import lazyLionABI from '../../LazyLionAbi.json';
+import LazyCubsAbi from '../../LazyCubsAbi.json';
 import lionsBackgroundColors from '../../constants/lionsBackgroundColors.json';
 import axios from 'axios';
 import Web3 from 'web3';
@@ -48,8 +49,10 @@ const lionimg = {
 
 const MyCollection = (props) => {
     const [key, setKey] = useState('home');
-    const [tokens, setTokens] = useState([]);
+    const [lazyLionTokens, setLazyLionTokens] = useState([]);
+    const [lazyCubsTokens, setLazyCubsTokens] = useState([]);
     const [data, setData] = useState([]);
+    const [lazyCubsData, setlazyCubsData] = useState([]);
     const [roarPoints, setRoarPoints] = useState();
 
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
@@ -69,22 +72,37 @@ const MyCollection = (props) => {
             const lionContract = new web3.eth.Contract(lazyLionABI, process.env.REACT_APP_LAZY_LIONS);
         
             // Get the tokens owned by the user
-            lionContract.methods.tokensOfOwner(address).call().then(tokens => {
-            
-              setTokens(tokens);
+            // lionContract.methods.tokensOfOwner(address).call().then(tokens => {
+                        
+            //   setLazyLionTokens(tokens);
+            // //   console.log('lazyLionTokens');
+            // //   console.log(tokens);
+            // });
+            axios.get("http://18.225.2.150:3000/wallet-nft-holdings/0xAf0d74427E77EC17de78f0DA68f2D97302295730/1")    
+            .then(response => {
+                setLazyLionTokens(response.data.nftIds);
+                // console.log('response.data.nftIds');
+                // console.log(response.data.nftIds);
+            });
+
+            axios.get("http://18.225.2.150:3000/wallet-nft-holdings/0xAf0d74427E77EC17de78f0DA68f2D97302295730/2")    
+            .then(response => {
+                setLazyCubsTokens(response.data.nftIds);
+                // console.log('response.data.nftIds');
+                // console.log(response.data.nftIds);
             });
         }
     }, [wallet]);
 
     useEffect(() => {
-        // localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjc4NTcyNTQxfQ.ltmg6__9vZG2o8x7VOdzJmk2Q6Z9yxWvERuM47e-o5w');
-        if(tokens.length > 0){
+        // localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjc4NjQ4MDkxfQ.6MsQeKerKGm6PQADg27xEcs-aJe5LyMYHaUgsAPqXxI');
+        if(lazyLionTokens.length > 0){
 
-            tokens.map((token) =>{
+            lazyLionTokens.map((token) =>{
                     // console.log('map'+token);
                     axios.get(`https://ipfs.io/ipfs/QmNpHFmk4GbJxDon2r2soYpwmrKaz1s6QfGMnBJtjA2ESd/${token}`)    
                         .then(response => {
-                            console.log(response.data);
+                            // console.log(response.data);
 
                             const imageURL = response.data.image.replace("ipfs://", "https://ipfs.io/ipfs/");
                             let newObj;
@@ -97,19 +115,69 @@ const MyCollection = (props) => {
                                         }
                                 }
                             })
+                            // console.log('newObj');
+                            // console.log(newObj);
                             setData(data => [...data, newObj] );
                         });
             });
 
         }
-    }, [tokens,wallet]);
+    }, [lazyLionTokens,wallet]);
+
+    useEffect(() => {
+
+        if(lazyCubsTokens.length > 0){
+
+            lazyCubsTokens.map((token) =>{
+                    console.log('map'+token);
+                    axios.get(`https://metadata.lazylionsnft.com/api/lazycubs/${token}.json`)    
+                        .then(response => {
+                            // console.log('LazyCubsAbi');
+                            // console.log(response.data);
+
+                            const imageURL = response.data.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+                            let newObj2;
+                            lionsBackgroundColors.map((backgroundColor)=>{
+                                if(backgroundColor.Background.localeCompare(response.data?.attributes[0].value, undefined, { sensitivity: 'base' }) === 0){
+                                // if(backgroundColor.Background === response.data?.attributes[0].value){
+                                    console.log('hello');
+                                    newObj2 = {
+                                        "backgrounColor": backgroundColor['Lazy Cubs (old) Background'],
+                                        "imageURL": imageURL,
+                                         ...response.data
+                                        }
+                                }
+                            })
+                            // console.log('newObj2');
+                            // console.log(newObj2);
+                            setlazyCubsData(lazyCubsData => [...lazyCubsData, newObj2] );
+
+                        });
+                      
+            });
+            // console.log('lazyCubsData');
+            // console.log(lazyCubsData);
+        
+        }
+    }, [lazyCubsTokens,wallet]);
 
     useEffect(() => {
 
         const storedValue = localStorage.getItem('token');
-        if(data.length === tokens.length && storedValue){
+        if(data.length === lazyLionTokens.length && storedValue){
+            if(lazyCubsData.length === lazyCubsTokens.length){
 
         const formattedData = { nfts: data.map(( datanft_id ) => ({ collection_id: 1, nft_id: parseInt(datanft_id.name.replace('#', '')) })) };
+        const formattedDataCubs = { nfts: lazyCubsData.map(( datanft_id ) => ({ collection_id: 2, nft_id: parseInt(datanft_id.name.replace('#', '')) })) };
+
+        if(formattedData["nfts"].length != 0 && formattedDataCubs["nfts"].length != 0){
+            console.log(formattedData["nfts"]);
+            console.log(formattedDataCubs["nfts"]);
+            // formattedData["nfts"] += formattedDataCubs["nfts"];
+            formattedData["nfts"] = formattedData["nfts"].concat(formattedDataCubs["nfts"]);
+            console.log('final');
+            console.log(formattedData);
+
 
             axios.post("http://18.225.2.150:3000/user_nfts", formattedData,
             {headers: {
@@ -131,15 +199,20 @@ const MyCollection = (props) => {
                         .then(response => {
                             // console.log('nfts response');
                             // console.log(response.data.points[1]);
-                            props.onQueryPoints(response.data.points[1]);
+                            const pointsArr = Object.values(response.data.points);
+                            const totalPoints = pointsArr.reduce((total, currentValue) => total + currentValue, 0);
+                            props.onQueryPoints(totalPoints);
                         });
             });
 
         }
-    }, [data]);
 
-    console.log(data);
-    console.log('data');
+        }
+    }
+    }, [data,lazyCubsData]);
+
+    // console.log(data);
+    // console.log('data');
 
     return (
             <div style={container}>
@@ -152,12 +225,20 @@ const MyCollection = (props) => {
                             onSelect={(k) => setKey(k)}
                             className="mb-3"
                             >
-                            <Tab eventKey="home" title={'All '+data.length}>
+                            <Tab eventKey="home" title={'All '+data.length+lazyCubsData.length}>
                                 <div className='d-flex flex-wrap mt-5'>
                                 {data && data.map((lion)=>
                                     <div style={imgdiv} >
                                         <img className='galleryImg' onClick={() => imageChange(lion.imageURL, "#"+lion.backgrounColor)} style={lionimg} src={lion.imageURL}/>
                                         <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                                        <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
+                                    </div>
+                                )
+                                }
+                                {lazyCubsData && lazyCubsData.map((lion)=>
+                                    <div style={imgdiv} >
+                                        <img  onClick={() => imageChange(lion.imageURL, "#"+lion.backgrounColor)} className='galleryImg' style={lionimg} src={lion.imageURL}/>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Cubs</span>
                                         <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
                                 )
@@ -168,7 +249,7 @@ const MyCollection = (props) => {
                                 <div className='d-flex flex-wrap mt-5'>
                                 {data && data.map((lion)=>
                                     <div style={imgdiv} >
-                                        <img className='galleryImg' style={lionimg} src={lion.imageURL}/>
+                                        <img  onClick={() => imageChange(lion.imageURL, "#"+lion.backgrounColor)} className='galleryImg' style={lionimg} src={lion.imageURL}/>
                                         <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
                                         <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
                                     </div>
@@ -176,12 +257,17 @@ const MyCollection = (props) => {
                                 }
                                 </div>  
                             </Tab>
-                            <Tab eventKey="Clubs" title="Lazy Clubs 0"> 
-                                {/* <div style={imgdiv} >
-                                        <img style={lionimg} src={lion2}/>
-                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Lions</span>
+                            <Tab eventKey="Clubs" title={'Lazy Cubs '+lazyCubsData.length}> 
+                                <div className='d-flex flex-wrap mt-5'>
+                                    {lazyCubsData && lazyCubsData.map((lion)=>
+                                    <div style={imgdiv} >
+                                        <img  onClick={() => imageChange(lion.imageURL, "#"+lion.backgrounColor)} className='galleryImg' style={lionimg} src={lion.imageURL}/>
+                                        <span style={{fontFamily: 'Barlow',fontSize: '16px', fontWeight:'100'}}>Lazy Cubs</span>
                                         <p style={{fontSize: '24px',fontWeight: '700'}} className='font-weight-bold'>#7854</p>
-                                </div> */}
+                                    </div>
+                                )
+                                }
+                                </div>  
                             </Tab>
                             <Tab eventKey="Drinks" title="Lazy Drinks 0">
                                 

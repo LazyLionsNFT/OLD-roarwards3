@@ -9,6 +9,7 @@ import email from '../../assets/images/icons/email.png';
 import { init, useConnectWallet, useAccountCenter } from '@web3-onboard/react'
 import injectedModule from '@web3-onboard/injected-wallets'
 import Web3 from 'web3';
+import axios from 'axios';
 
 const web3 = new Web3(window.ethereum);
 
@@ -113,6 +114,20 @@ const TopSection = (props) => {
             // navigate('/auth/twitter/12312312dqwe1212dqw121.asd121')
         };
 
+        const discordcallAPI = () => {
+            const storedValue = localStorage.getItem('token');
+            axios.get("http://18.225.2.150:3000/updateBackDatedPoints/0xAf0d74427E77EC17de78f0DA68f2D97302295730",
+            {headers: {
+                'authorization': "Bearer "+storedValue,
+                'content-type': 'application/json',
+                'http-equiv':"Content-Security-Policy",
+                'content':"upgrade-insecure-requests"
+            }
+            })    
+            .then(response => {
+            });
+            };
+
     if (wallet) {
         //   console.log("updateAccountCenter :"+updateAccountCenter);
           updateAccountCenter({ minimal: true, enabled: false })
@@ -136,7 +151,7 @@ const TopSection = (props) => {
                                 <img style={{marginRight: '8px'}} src={walleticon}/>
                                     {connecting ? 'connecting' : wallet ? wallet?.accounts[0]?.address : 'Click to connect Wallet'}
                                 </span>
-                                <span style={addresses} className='font-weight-light'>
+                                <span onClick={discordcallAPI}  style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={twitter}/>
                                     Discord Not Connected
                                 </span>
