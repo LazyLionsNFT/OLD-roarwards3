@@ -173,15 +173,15 @@ const TopSection = (props) => {
                                     {connecting ? 'connecting' : wallet ? wallet?.accounts[0]?.address : 'Click to connect Wallet'}
                                 </span>
                                 <span onClick={discordcallAPI}  style={addresses} className='font-weight-light connect-wallet'>
-                                <img style={{marginRight: '8px'}} src={twitter}/>
-                                    Discord Not Connected
+                                <img style={{marginRight: '8px'}} src={discord}/>
+                                    {userInfo ? userInfo.discord_member_id : 'Discord Not Connected'}
                                 </span>
                                 <span onClick={() => setShow(true)}  style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={email}/>
                                     {userInfo ? userInfo.email : ''}
                                 </span>
                                 <span onClick={callAPI}  style={addresses} className='font-weight-light connect-wallet'>
-                                <img style={{marginRight: '8px'}} src={discord}/>
+                                <img style={{marginRight: '8px'}} src={twitter}/>
                                    {storedValue ? 'Twitter Connected' : 'Twitter Not Connected' }
                                 </span>
                             </div>

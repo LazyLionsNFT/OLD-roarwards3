@@ -34,18 +34,18 @@ const Token = () => {
                     });
 
 
-                axios.get("http://18.225.2.150:3000/collections",
-                    {headers: {
-                        'authorization': "Bearer "+token,
-                        'content-type': 'text/json',
-                        'http-equiv':"Content-Security-Policy",
-                        'content':"upgrade-insecure-requests"
-                    }
-                })    
-                    .then(response => {
-                            console.log('collection response');
-                            console.log(response);
-                    });
+                // axios.get("http://18.225.2.150:3000/collections",
+                //     {headers: {
+                //         'authorization': "Bearer "+token,
+                //         'content-type': 'text/json',
+                //         'http-equiv':"Content-Security-Policy",
+                //         'content':"upgrade-insecure-requests"
+                //     }
+                // })    
+                //     .then(response => {
+                //             console.log('collection response');
+                //             console.log(response);
+                //     });
             }
         }
     }, [address,token]);
