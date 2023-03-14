@@ -95,7 +95,7 @@ const MyCollection = (props) => {
     }, [wallet]);
 
     useEffect(() => {
-        // localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjc4NjQ4MDkxfQ.6MsQeKerKGm6PQADg27xEcs-aJe5LyMYHaUgsAPqXxI');
+        localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjc4NjQ4MDkxfQ.6MsQeKerKGm6PQADg27xEcs-aJe5LyMYHaUgsAPqXxI');
         if(lazyLionTokens.length > 0){
 
             lazyLionTokens.map((token) =>{
@@ -202,7 +202,7 @@ const MyCollection = (props) => {
                             const pointsArr = Object.values(response.data.points);
                             const totalPoints = pointsArr.reduce((total, currentValue) => total + currentValue, 0);
                             props.onQueryPoints(totalPoints);
-                        });
+                        });     
             });
 
         }
@@ -225,7 +225,7 @@ const MyCollection = (props) => {
                             onSelect={(k) => setKey(k)}
                             className="mb-3"
                             >
-                            <Tab eventKey="home" title={'All '+data.length+lazyCubsData.length}>
+                            <Tab eventKey="home" title={`All ${data.length+lazyCubsData.length}`}>
                                 <div className='d-flex flex-wrap mt-5'>
                                 {data && data.map((lion)=>
                                     <div style={imgdiv} >

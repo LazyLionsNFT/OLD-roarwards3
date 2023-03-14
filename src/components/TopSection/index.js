@@ -6,8 +6,9 @@ import discord from '../../assets/images/icons/discord.png';
 import walleticon from '../../assets/images/icons/ic_eth.png';
 import underline from '../../assets/images/underline.png';
 import email from '../../assets/images/icons/email.png';
-import { init, useConnectWallet, useAccountCenter } from '@web3-onboard/react'
-import injectedModule from '@web3-onboard/injected-wallets'
+import EmailModal from '../EmailModal';
+import { init, useConnectWallet, useAccountCenter } from '@web3-onboard/react';
+import injectedModule from '@web3-onboard/injected-wallets';
 import Web3 from 'web3';
 import axios from 'axios';
 
@@ -95,6 +96,8 @@ const roarPoints = {
 
 const TopSection = (props) => {
 
+    const [show, setShow] = useState(false);
+    const [userInfo, setUserInfo] = useState([]);
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
     const updateAccountCenter = useAccountCenter()
 
@@ -105,35 +108,52 @@ const TopSection = (props) => {
         color: 'white'
     }  
 
-    // console.log('REACT_APP_ADDRESS');
-    // console.log(process.env.REACT_APP_LAZY_LIONS);
-
     const callAPI = () => {
-        //   navigate('http://18.225.2.150:3000/auth/twitter')
           window.location.href = 'http://18.225.2.150:3000/auth/twitter';
-            // navigate('/auth/twitter/12312312dqwe1212dqw121.asd121')
         };
 
-        const discordcallAPI = () => {
-            const storedValue = localStorage.getItem('token');
-            axios.get("http://18.225.2.150:3000/updateBackDatedPoints/0xAf0d74427E77EC17de78f0DA68f2D97302295730",
-            {headers: {
-                'authorization': "Bearer "+storedValue,
-                'content-type': 'application/json',
-                'http-equiv':"Content-Security-Policy",
-                'content':"upgrade-insecure-requests"
-            }
-            })    
-            .then(response => {
-            });
-            };
+    const discordcallAPI = () => {
+            window.location.href = 'http://18.225.2.150:3000/auth/discord';
+        };
+
+    // const discordcallAPI = () => {
+    //     const storedValue = localStorage.getItem('token');
+    //         axios.get("http://18.225.2.150:3000/updateBackDatedPoints/0xAf0d74427E77EC17de78f0DA68f2D97302295730",
+    //             {headers: {
+    //                 'authorization': "Bearer "+storedValue,
+    //                 'content-type': 'application/json',
+    //                 'http-equiv':"Content-Security-Policy",
+    //                 'content':"upgrade-insecure-requests"
+    //             }
+    //         })    
+    //             .then(response => {});
+    //     };
 
     if (wallet) {
-        //   console.log("updateAccountCenter :"+updateAccountCenter);
           updateAccountCenter({ minimal: true, enabled: false })
             // ethersProvider = new ethers.providers.Web3Provider(wallet.provider, 'any')
           // console.log(ethersProvider);
         }
+
+    useEffect(()=>{
+        const storedValue = localStorage.getItem('token');
+        if(storedValue){
+            axios.get("http://18.225.2.150:3000/currentUser",
+                    {headers: {
+                        'authorization': "Bearer "+storedValue,
+                        'content-type': 'application/json',
+                        'http-equiv':"Content-Security-Policy",
+                        'content':"upgrade-insecure-requests"
+                    }
+                })    
+                    .then(response => {
+                        // console.log('current user')
+                        setUserInfo(response.data.user);
+            });
+        }        
+
+    },[]);    
+
 
     return (
         <div style={main}>
@@ -145,7 +165,7 @@ const TopSection = (props) => {
                     </div>
                     <div className='w-50 text-start mt-2 pl-4'>
                         <div style={rightContent}>
-                            <h1 style={barlow}>David Gilmour</h1>
+                            <h1 style={barlow}>{userInfo ? userInfo.name : ''}</h1>
                             <div style={grid} className=' mt-3'>
                                 <span onClick={() => (wallet ? null : connect())} style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={walleticon}/>
@@ -155,9 +175,9 @@ const TopSection = (props) => {
                                 <img style={{marginRight: '8px'}} src={twitter}/>
                                     Discord Not Connected
                                 </span>
-                                <span style={addresses} className='font-weight-light'>
+                                <span onClick={() => setShow(true)}  style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={email}/>
-                                    test.example@gmail.com
+                                    {userInfo ? userInfo.email : ''}
                                 </span>
                                 <span onClick={callAPI}  style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={discord}/>
@@ -171,6 +191,7 @@ const TopSection = (props) => {
                     </div>
                 </div>
             </div>
+            <EmailModal email={userInfo ? userInfo.email : ''} open={show} close={() => setShow(false)}/>
         </div>
     );
 };
