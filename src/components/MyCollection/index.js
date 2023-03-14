@@ -95,7 +95,7 @@ const MyCollection = (props) => {
     }, [wallet]);
 
     useEffect(() => {
-        localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjc4NjQ4MDkxfQ.6MsQeKerKGm6PQADg27xEcs-aJe5LyMYHaUgsAPqXxI');
+        // localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjc4NjQ4MDkxfQ.6MsQeKerKGm6PQADg27xEcs-aJe5LyMYHaUgsAPqXxI');
         if(lazyLionTokens.length > 0){
 
             lazyLionTokens.map((token) =>{
@@ -129,7 +129,7 @@ const MyCollection = (props) => {
         if(lazyCubsTokens.length > 0){
 
             lazyCubsTokens.map((token) =>{
-                    console.log('map'+token);
+                    // console.log('map'+token);
                     axios.get(`https://metadata.lazylionsnft.com/api/lazycubs/${token}.json`)    
                         .then(response => {
                             // console.log('LazyCubsAbi');
@@ -155,8 +155,8 @@ const MyCollection = (props) => {
                         });
                       
             });
-            console.log('lazyCubsData');
-            console.log(lazyCubsData);
+            // console.log('lazyCubsData');
+            // console.log(lazyCubsData);
         
         }
     }, [lazyCubsTokens,wallet]);
@@ -175,8 +175,8 @@ const MyCollection = (props) => {
             console.log(formattedDataCubs["nfts"]);
             // formattedData["nfts"] += formattedDataCubs["nfts"];
             formattedData["nfts"] = formattedData["nfts"].concat(formattedDataCubs["nfts"]);
-            console.log('final');
-            console.log(formattedData);
+            // console.log('final');
+            // console.log(formattedData);
 
 
             axios.post("http://18.225.2.150:3000/user_nfts", formattedData,
