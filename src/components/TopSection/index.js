@@ -155,6 +155,26 @@ const TopSection = (props) => {
 
     },[]);    
 
+    
+    useEffect(()=>{
+        const storedValue = localStorage.getItem('token');
+        if(storedValue){
+            axios.get("http://18.225.2.150:3000/update-lionPFP",
+                    {headers: {
+                        'authorization': "Bearer "+storedValue,
+                        'content-type': 'application/json',
+                        'http-equiv':"Content-Security-Policy",
+                        'content':"upgrade-insecure-requests"
+                    }
+                })    
+                    .then(response => {
+                        // console.log('current user')
+                        console.log(response.data);
+            });
+        }        
+
+    },[]);    
+
 
     return (
         <div style={main}>

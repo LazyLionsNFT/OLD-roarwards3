@@ -1,12 +1,12 @@
 import { Button } from 'bootstrap';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import twitter from '../../assets/images/icons/twiiter.png';
 import discord from '../../assets/images/icons/discord.png';
 import walleticon from '../../assets/images/icons/ic_eth.png';
 import popup from '../../assets/images/icons/popup.png';
 import { init, useConnectWallet, useAccountCenter } from '@web3-onboard/react'
-import Wallet from '../Wallet';
+import axios from 'axios';
 
 const connectionbox = {
     border: '1px solid #f1f1f1',
@@ -41,9 +41,30 @@ const walletConnectBox = {
 
 const ConnectionModal = (props) => {
 
+    const [userInfo, setUserInfo] = useState([]);
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
 
     const storedValue = localStorage.getItem('token');
+
+
+    useEffect(()=>{
+        const storedValue = localStorage.getItem('token');
+        if(storedValue){
+            axios.get("http://18.225.2.150:3000/currentUser",
+                    {headers: {
+                        'authorization': "Bearer "+storedValue,
+                        'content-type': 'application/json',
+                        'http-equiv':"Content-Security-Policy",
+                        'content':"upgrade-insecure-requests"
+                    }
+                })    
+                    .then(response => {
+                        // console.log('current user')
+                        setUserInfo(response.data.user);
+            });
+        }        
+
+    },[]);  
 
     return (
             <Modal

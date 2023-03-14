@@ -84,7 +84,7 @@ const MyCollection = (props) => {
     }, [wallet]);
 
     useEffect(() => {
-        localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNjc4ODI2NTUwfQ.ALU96ALYpmTzox4BRmnIAmQCebQZIr4RpMw2AnQH9kY');
+        // localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNjc4ODI2NTUwfQ.ALU96ALYpmTzox4BRmnIAmQCebQZIr4RpMw2AnQH9kY');
         if(lazyLionTokens.length > 0){
 
             lazyLionTokens.map((token) =>{
