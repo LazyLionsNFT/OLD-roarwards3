@@ -114,7 +114,7 @@ const TopSection = (props) => {
 
     const discordcallAPI = () => {
         const storedValue = localStorage.getItem('token');
-            window.location.href = `http://18.225.2.150:3000/auth/discord/${storedValue}`;
+            window.location.href = `http://18.225.2.150:3000/auth/discord`;
         };
 
     // const discordcallAPI = () => {
