@@ -142,7 +142,7 @@ const MyCollection = (props) => {
                                 // if(backgroundColor.Background === response.data?.attributes[0].value){
                                     console.log('hello');
                                     newObj2 = {
-                                        "backgrounColor": backgroundColor['Lazy Cubs (old) Background'],
+                                        "backgrounColor": backgroundColor['Lazy Cubs (Young) Background'],
                                         "imageURL": imageURL,
                                          ...response.data
                                         }
@@ -155,8 +155,8 @@ const MyCollection = (props) => {
                         });
                       
             });
-            // console.log('lazyCubsData');
-            // console.log(lazyCubsData);
+            console.log('lazyCubsData');
+            console.log(lazyCubsData);
         
         }
     }, [lazyCubsTokens,wallet]);
