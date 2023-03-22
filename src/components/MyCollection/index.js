@@ -136,8 +136,7 @@ const MyCollection = (props) => {
                         });
                       
             });
-
-        
+      
         }
     }, [lazyCubsTokens,wallet]);
 
@@ -146,8 +145,8 @@ const MyCollection = (props) => {
         const storedValue = localStorage.getItem('token');
         if(data.length === lazyLionTokens.length && storedValue){
             if(lazyCubsData.length === lazyCubsTokens.length){
-                console.log(data);
-                console.log(lazyCubsData);
+                // console.log(data);
+                // console.log(lazyCubsData);
 
         const formattedData = { nfts: data.map(( datanft_id ) => ({ collection_id: 1, nft_id: parseInt(datanft_id.name.replace('#', '')), imageUrl: datanft_id.imageURL })) };
         const formattedDataCubs = { nfts: lazyCubsData.map(( datanft_id ) => ({ collection_id: 2, nft_id: parseInt(datanft_id.name.replace('#', '')), imageUrl: datanft_id.imageURL })) };

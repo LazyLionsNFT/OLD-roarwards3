@@ -155,38 +155,40 @@ const TopSection = (props) => {
 
     },[]);    
 
-    
-    useEffect(()=>{
-        const storedValue = localStorage.getItem('token');
-        if(storedValue){
-            axios.get("http://18.225.2.150:3000/update-lionPFP",
-                    {headers: {
-                        'authorization': "Bearer "+storedValue,
-                        'content-type': 'application/json',
-                        'http-equiv':"Content-Security-Policy",
-                        'content':"upgrade-insecure-requests"
-                    }
-                })    
-                    .then(response => {
-                        // console.log('current user')
-                        console.log(response.data);
-            });
-        }        
+    // console.log(userInfo);
 
-    },[]);    
+    
+    // useEffect(()=>{
+    //     const storedValue = localStorage.getItem('token');
+    //     if(storedValue){
+    //         axios.get("http://18.225.2.150:3000/update-lionPFP",
+    //                 {headers: {
+    //                     'authorization': "Bearer "+storedValue,
+    //                     'content-type': 'application/json',
+    //                     'http-equiv':"Content-Security-Policy",
+    //                     'content':"upgrade-insecure-requests"
+    //                 }
+    //             })    
+    //                 .then(response => {
+    //                     // console.log('current user')
+    //                     console.log(response.data);
+    //         });
+    //     }        
+
+    // },[]);    
 
 
     return (
         <div style={main}>
             <div style={container}>
-            <   NavBar/>
+            <NavBar userInfo={userInfo}/>
                 <div  className='d-flex flex-row justify-content-center'>
                     <div className='w-50 text-center'>
                         <img style={Object.keys(props.query).length == 0  ? {width: "96%"} : {width: "86%"}} src={ Object.keys(props.query).length == 0 ? lion1 : props.query.imagename }/>
                     </div>
                     <div className='w-50 text-start mt-2 pl-4'>
                         <div style={rightContent}>
-                            <h1 style={barlow}>{userInfo ? userInfo.name : ''}</h1>
+                            <h1 style={barlow}>{userInfo?.name ? userInfo.name : ''}</h1>
                             <div style={grid} className=' mt-3'>
                                 <span onClick={() => (wallet ? null : connect())} style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={walleticon}/>
@@ -194,11 +196,11 @@ const TopSection = (props) => {
                                 </span>
                                 <span onClick={discordcallAPI}  style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={discord}/>
-                                    {userInfo ? userInfo.discord_member_id : 'Discord Not Connected'}
+                                    {userInfo?.discord_member_id ? userInfo.discord_member_id : 'Discord Not Connected'}
                                 </span>
                                 <span onClick={() => setShow(true)}  style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={email}/>
-                                    {userInfo ? userInfo.email : ''}
+                                    {userInfo?.email ? userInfo.email : ''}
                                 </span>
                                 <span onClick={callAPI}  style={addresses} className='font-weight-light connect-wallet'>
                                 <img style={{marginRight: '8px'}} src={twitter}/>

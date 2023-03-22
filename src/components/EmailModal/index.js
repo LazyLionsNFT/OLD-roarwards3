@@ -2,41 +2,9 @@ import { Button } from 'bootstrap';
 import React, {useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import twitter from '../../assets/images/icons/twiiter.png';
-import discord from '../../assets/images/icons/discord.png';
-import walleticon from '../../assets/images/icons/ic_eth.png';
-import popup from '../../assets/images/icons/popup.png';
 import { init, useConnectWallet, useAccountCenter } from '@web3-onboard/react'
 import axios from 'axios';
 
-const connectionbox = {
-    border: '1px solid #f1f1f1',
-    textAlign: 'center',
-    width: '90%',
-    margin: 'auto',
-    borderRadius: '35px'
-}
-const connectionButton = {
-    background: '#972342',
-    border: '#972342',
-    color: '#f1f1f1',
-    borderTopRightRadius: '22px',
-    borderBottomRightRadius: '22px',
-    padding: '8px 24px',
-    marginRight: '-22px'
-}
-const paddingleftright = {
-    padding: '0px 20px'
-}
-const walletConnectBox = {
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    width: '245px',
-    width: 'min-content',
-    display: 'inline-block',
-    width: '183px',
-    verticalAlign: 'sub'
-}
 const inputIcon = {
     background: 'none',
     borderRight: 'none',
@@ -71,7 +39,7 @@ const EmailModal = (props) => {
     const storedValue = localStorage.getItem('token');
 
     function handleClick() {
-        console.log(inputValue); // Output: the value entered by the user
+
         const storedValue = localStorage.getItem('token');
         if(storedValue){
             axios.post("http://18.225.2.150:3000/updateEmail",{email: inputValue},
@@ -85,7 +53,7 @@ const EmailModal = (props) => {
                     .then(response => {
                         // console.log(response.data);
                         window.location.href = '/'
-                });
+            });
         }    
       }
 
@@ -111,17 +79,6 @@ const EmailModal = (props) => {
                     You can change your email adress
                 </p>
                 <div style={{fontFamily:'Barlow', textAlign: 'left', fontWeight: '300'}} className='mt-2 mb-5'>
-                    {/* <h3 style={paddingleftright}>Socials</h3>
-                    <p style={paddingleftright}>You can connect or disconnect your socials</p> */}
-{/* 
-                        <div style={connectionbox}>
-                            <span style={{marginRight: storedValue ? '73px' : '43px'}}  className='font-weight-light mr-4'>
-                                <img style={{marginRight: '8px',width: '6%'}} src={twitter}/>
-                                Twitter.com
-                            </span>
-                            <button style={connectionButton}>{storedValue ? 'Connected' : 'Not Connected'}</button>
-                        </div> */}
-
                         <div class="input-group mt-4" style={{width:'90%', margin:'auto'}}>
                             <div class="input-group-prepend">
                                 <span class="input-group-text" style={inputIcon}>

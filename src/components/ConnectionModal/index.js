@@ -1,4 +1,3 @@
-import { Button } from 'bootstrap';
 import React, {useState, useEffect} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import twitter from '../../assets/images/icons/twiiter.png';
@@ -6,7 +5,6 @@ import discord from '../../assets/images/icons/discord.png';
 import walleticon from '../../assets/images/icons/ic_eth.png';
 import popup from '../../assets/images/icons/popup.png';
 import { init, useConnectWallet, useAccountCenter } from '@web3-onboard/react'
-import axios from 'axios';
 
 const connectionbox = {
     border: '1px solid #f1f1f1',
@@ -38,33 +36,37 @@ const walletConnectBox = {
     verticalAlign: 'sub'
 }
 
+const inputIcon = {
+    background: 'none',
+    borderRight: 'none',
+    borderRadius: '26px 0px 0px 26px',
+    padding: '10px 14px 10px 26px',
+    borderColor: '#FAFAFA',
+}
+const inputField = {
+    background: 'transparent',
+    color: '#FAFAFA',
+    borderLeft: 'none',
+    borderRight: 'none',
+    padding: '10px 0px',
+    borderColor: '#FAFAFA',
+}
+const inputButton = {
+    background: 'rgb(151, 35, 66)',
+    borderLeft: 'none',
+    borderTopLeftRadius: '0px',
+    borderBottomLeftRadius: '0px',
+    borderTopRightRadius: '26px',
+    borderBottomRightRadius: '26px',
+    borderColor: '#FAFAFA',
+    padding: '10px 25px 10px 22px'
+}
 
 const ConnectionModal = (props) => {
 
-    const [userInfo, setUserInfo] = useState([]);
     const [{ wallet, connecting }, connect, disconnect] = useConnectWallet()
 
     const storedValue = localStorage.getItem('token');
-
-
-    useEffect(()=>{
-        const storedValue = localStorage.getItem('token');
-        if(storedValue){
-            axios.get("http://18.225.2.150:3000/currentUser",
-                    {headers: {
-                        'authorization': "Bearer "+storedValue,
-                        'content-type': 'application/json',
-                        'http-equiv':"Content-Security-Policy",
-                        'content':"upgrade-insecure-requests"
-                    }
-                })    
-                    .then(response => {
-                        // console.log('current user')
-                        setUserInfo(response.data.user);
-            });
-        }        
-
-    },[]);  
 
     return (
             <Modal
@@ -94,13 +96,26 @@ const ConnectionModal = (props) => {
                             </span>
                             <button style={connectionButton}>Connected</button>
                         </div> */}
-                        <div style={connectionbox}>
+                        {/* <div style={connectionbox}>
                             <span style={{marginRight: storedValue ? '73px' : '43px'}}  className='font-weight-light mr-4'>
                                 <img style={{marginRight: '8px',width: '6%'}} src={twitter}/>
                                 Twitter.com
                             </span>
                             <button style={connectionButton}>{storedValue ? 'Connected' : 'Not Connected'}</button>
+                        </div> */}
+
+                        <div class="input-group mt-4" style={{width:'90%', margin:'auto'}}>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style={inputIcon}>
+                                <img src={twitter} alt="Icon" />
+                                </span>
+                            </div>
+                            <input style={inputField} value='Twitter.com' type="text" class="form-control" placeholder="Enter Email"/>
+                            <div class="input-group-append">
+                                <button style={inputButton} class="btn btn-primary"  type="button">{storedValue ? 'Connected' : 'Not Connected'}</button>
+                            </div>
                         </div>
+
                         <div style={{margin: '18px 22px'}}  class="form-check">
                             <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something"/>
                             <label class="form-check-label">Show on public profile</label>
@@ -113,13 +128,26 @@ const ConnectionModal = (props) => {
                             </span>
                             <button style={connectionButton}>Connected</button>
                         </div> */}
-                        <div style={connectionbox}>
+                        {/* <div style={connectionbox}>
                             <span style={{marginRight: '40px'}}  className='font-weight-light mr-4'>
                                 <img style={{marginRight: '8px',width: '6%'}} src={discord}/>
-                                Discord.com
+                                {userInfo?.discord_member_id ? userInfo.discord_member_id : '11224455668845652255'}
                             </span>
-                            <button style={connectionButton}>Not Connected</button>
+                            <button style={connectionButton}>Connected</button>
+                        </div> */}
+
+                        <div class="input-group mt-4" style={{width:'90%', margin:'auto'}}>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style={inputIcon}>
+                                <img src={discord} alt="Icon" />
+                                </span>
+                            </div>
+                            <input style={inputField} value= {props.userInfo?.discord_member_id ? props.userInfo.discord_member_id : 'Discord.com'} type="text" class="form-control" placeholder="Enter Email"/>
+                            <div class="input-group-append">
+                                <button style={inputButton} class="btn btn-primary"  type="button">{props.userInfo?.discord_member_id ? 'Connected' : 'Not Connected'}</button>
+                            </div>
                         </div>
+                        
                         <div style={{margin: '18px 22px'}} class="form-check">
                             <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something"/>
                             <label class="form-check-label">Show on public profile</label>
@@ -128,6 +156,7 @@ const ConnectionModal = (props) => {
                         <h3 style={paddingleftright} className='mt-4'>Wallets</h3>
                         <p style={paddingleftright}>You can associate more than one wallet address with your ROARwards account</p>
 
+                        {wallet ?
                         <div style={connectionbox}>
                             <span style={walletConnectBox}  className='font-weight-light mr-4'>
                                 <img style={{marginRight: '6px',width: '10%', marginTop: '-4px'}} src={walleticon}/>
@@ -135,6 +164,7 @@ const ConnectionModal = (props) => {
                             </span>
                             <button style={connectionButton}>Connected</button>
                         </div>
+                        : ''}
                         <p   
                         onClick={
                             async () => {

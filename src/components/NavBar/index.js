@@ -53,7 +53,7 @@ const buttonstyle = {
     marginRight: '10px'
 }
 
-const NavBar = () => {
+const NavBar = (props) => {
     const [show, setShow] = useState(false);
 
     return (
@@ -118,7 +118,7 @@ const NavBar = () => {
                 </div>
             </div>
 
-            <ConnectionModal open={show} close={() => setShow(false)}/>
+            <ConnectionModal userInfo={props.userInfo} open={show} close={() => setShow(false)}/>
         </div>
     );
 };
